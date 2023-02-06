@@ -1,5 +1,5 @@
 // Sfruttiamo le timing functions per fare il conto alla rovescia per la correzione di domani!
-// Ogni secondo il nostro countdown dovrà scalare fino alle 9:30 di domani mattina!
+// Ogni secondo il nostro countdown dovrà scalare fino alle 9:30 di lunedì mattina!
 
 
 // input element
@@ -9,7 +9,7 @@ const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
 
-setInterval(countDown, 1000) // richiamo la funzione "countdown" e verrà eseguita ogni secondo
+const intervalCountdown = setInterval(countDown, 1000) // richiamo la funzione "countdown" e verrà eseguita ogni secondo
 
 
 function countDown() {  // creo una funzione "countdown"
@@ -39,5 +39,15 @@ function countDown() {  // creo una funzione "countdown"
     hoursEl.innerHTML = (printHours < 10) ? `0${printHours}` : printHours;
     minutesEl.innerHTML = (printMinutes < 10) ? `0${printMinutes}` : printMinutes
     secondsEl.innerHTML =  (printSecond < 10) ? `0${printSecond}` : printSecond
+
+      if(
+        printSecond <= 0 &&
+        printMinutes <= 0 &&
+        printHours <= 0 &&
+        printDay <= 0
+    ){
+        clearInterval(intervalCountdown);
+    }
+
 }
 
